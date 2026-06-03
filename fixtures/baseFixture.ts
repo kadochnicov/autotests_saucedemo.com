@@ -1,11 +1,28 @@
 import { test as base, expect, Page } from '@playwright/test';
 import { testData as data } from '@/testData/testData';
+import { LoginPage } from '@/pages/LoginPage';
+import { MainPage } from '@/pages/MainPage';
 
-export const test = base.extend({
+type myFixtures = {
+    logined: LoginPage;
+}
+
+export const test = base.extend<myFixtures>({
+// расширяем базовую фикстуру
     page: async ({ page }, use) => {
         await page.goto(data.baseURL);
         await use(page);
     },
+
+// добавляем собственную фикстуру которая будет логинить стандартного пользователя
+    logined: async ({ page }, use) => {
+        const loginPage = new LoginPage(page);
+        await loginPage.login(data.standartUserName, data.pswrd);
+        
+// в тесте переменная logined будет равна объекту new LoginPage
+        await use(loginPage);
+    },
+
 });
 
-export { expect, Page }; 
+export { expect, Page };

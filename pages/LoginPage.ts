@@ -1,4 +1,5 @@
 import { Page } from "@playwright/test";
+import { MainPage } from "./MainPage";
 
 export class LoginPage {
     constructor(public page: Page) { }
@@ -15,6 +16,8 @@ export class LoginPage {
         await this.userName().fill(name);
         await this.password().fill(password);
         await this.btnLogin().click();
+
+        return new MainPage(this.page);
     }
 
 }
