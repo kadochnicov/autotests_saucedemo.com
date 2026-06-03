@@ -7,6 +7,9 @@ export const testData = {
     userNameCorrect: ['standard_user', 'problem_user', 'performance_glitch_user', 'error_user', 'visual_user'],
     lockedOutUser: 'locked_out_user',
 
+    // URLs
+    baseURL: 'https://www.saucedemo.com/',
+
     // ather
     pswrd: 'secret_sauce',
 }
