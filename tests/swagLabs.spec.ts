@@ -1,11 +1,11 @@
 import { test, expect, Page } from "@/fixtures/baseFixture";
 import { testData as data } from "@/testData/testData";
 import { LoginPage } from "../pages/LoginPage";
-import { MainPage } from "../pages/MaimPage";
+import { MainPage } from "../pages/MainPage";
 
 test.describe('my tests', () => {
 
-    for(const elment of data.userNameCorrect) {
+    for(const elment of data.correctUserNames) {
         test(`verify login for user ${elment}`, async({ page }: { page: Page }) => {
             const loginPage = new LoginPage(page);
             await loginPage.login(elment, data.pswrd);
