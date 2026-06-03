@@ -6,7 +6,7 @@ import { MainPage } from "../pages/MaimPage";
 test.describe('my tests', () => {
 
     for(const elment of data.userNameCorrect) {
-        test(`verify login for user ${elment}`, async ({ page }: { page: Page }) => {
+        test(`verify login for user ${elment}`, async({ page }: { page: Page }) => {
             await page.goto('https://www.saucedemo.com/');
     
             const loginPage = new LoginPage(page);
@@ -17,4 +17,12 @@ test.describe('my tests', () => {
         })
     }
     
+    test('verify login for locked out user', async({ page }: {page: Page}) => {
+        await page.goto('https://www.saucedemo.com/');
+
+        const loginPage = new LoginPage(page);
+        loginPage.login(data.lockedOutUser, data.pswrd)
+        await expect(loginPage.errorMessageLockedUser()).toHaveText(data.errorMessageLockedUser) 
+    })
+
 })

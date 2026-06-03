@@ -8,6 +8,7 @@ export class LoginPage {
     password = () => this.page.locator('#password');
     btnLogin = () => this.page.locator('#login-button');
     mainPageTitle = () => this.page.locator('.title');
+    errorMessageLockedUser = () => this.page.locator('[data-test="error"]');
 
     // actions
     async login(name: string, password: string) {
