@@ -4,7 +4,7 @@ import { LoginPage } from '@/pages/LoginPage';
 import { MainPage } from '@/pages/MainPage';
 
 type myFixtures = {
-    logined: LoginPage;
+    loggedIn: MainPage;
 }
 
 export const test = base.extend<myFixtures>({
@@ -15,14 +15,15 @@ export const test = base.extend<myFixtures>({
     },
 
 // добавляем собственную фикстуру которая будет логинить стандартного пользователя
-    logined: async ({ page }, use) => {
+    loggedIn: async ({ page }, use) => {
         const loginPage = new LoginPage(page);
         await loginPage.login(data.standartUserName, data.pswrd);
         
 // в тесте переменная logined будет равна объекту new LoginPage
-        await use(loginPage);
+        await use(new MainPage(page));
     },
 
 });
 
 export { expect, Page };
+     

@@ -1,0 +1,26 @@
+import { test, expect } from "@/fixtures/baseFixture";
+import { testData as data } from "@/testData/testData";
+
+test.describe('verife burger menu', () => {
+
+// Here I use the 'loggedIn' fixture, which logs me into the website as a standard user.
+    test('verify burger menu open ', async ({ loggedIn }) => {
+        await loggedIn.burgerMenu.openBurgerMemu();
+
+        await expect(await loggedIn.burgerMenu.isMenuOpen()).toBeTruthy();
+    })
+
+    test('verify burger menu close', async ({ loggedIn }) => {
+        await loggedIn.burgerMenu.openBurgerMemu();
+
+        await expect(await loggedIn.burgerMenu.isMenuOpen()).toBeFalsy();
+    })
+
+    test('verify menu items', async ({ loggedIn }) => {
+        await loggedIn.burgerMenu.openBurgerMemu();
+        const listOfItems = await loggedIn.burgerMenu.menuItems()
+            .allTextContents();
+            
+        await expect(listOfItems).toEqual(data.menuItemList);
+    })
+}) 
