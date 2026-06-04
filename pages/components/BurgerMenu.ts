@@ -9,7 +9,7 @@ export class BurgerMenu {
     // locators
     menuWraper = () => this.page.locator('.bm-menu-wrap');
     burgerMenuIconBurger = () => this.page.locator('#react-burger-menu-btn');
-    burgerMenuIconClose = () => this.page.locator('[id *= "cross-btn"]');
+    burgerMenuIconClose = () => this.page.locator('#react-burger-cross-btn');
     menuItems = () => this.page.locator('.bm-menu a');
 
     // actions
@@ -25,7 +25,9 @@ export class BurgerMenu {
         const atribute = await this.menuWraper().getAttribute('aria-hidden');
         if (atribute == 'true'){
             return false;
-        } else return true;
+        } else { 
+            return true;
+        };
     }
 
 }
