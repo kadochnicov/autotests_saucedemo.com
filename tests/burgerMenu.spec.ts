@@ -6,7 +6,6 @@ test.describe('verife burger menu', () => {
 // Here I use the 'loggedIn' fixture, which logs me into the website as a standard user.
     test('verify burger menu open', async ({ loggedIn }) => {
         await loggedIn.burgerMenu.openBurgerMemu();
-
         await expect(await loggedIn.burgerMenu.isMenuOpen()).toBeTruthy();
     })
 

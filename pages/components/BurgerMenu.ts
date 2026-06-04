@@ -1,4 +1,4 @@
-import { Page } from '@/fixtures/baseFixture';
+import { Page, expect } from '@/fixtures/baseFixture';
 
 export class BurgerMenu {
     page;
@@ -15,19 +15,24 @@ export class BurgerMenu {
     // actions
     async openBurgerMemu() {
         await this.burgerMenuIconBurger().click();
+        return this;
     }
 
     async closeBurgerMenu() {
         await this.burgerMenuIconClose().click();
+        return this;
     }
 
     async isMenuOpen() {
-        const atribute = await this.menuWraper().getAttribute('aria-hidden');
-        if (atribute == 'true'){
-            return false;
-        } else { 
+        const hide = await this.menuWraper().getAttribute('aria-hidden');
+
+        if (hide == 'false'){
+            console.log('menu is open');
             return true;
-        };
+        } else {
+            console.log('menu is closed');
+            return false;
+        }
     }
 
 }
