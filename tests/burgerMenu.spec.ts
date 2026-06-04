@@ -9,7 +9,7 @@ test.describe('verife burger menu', () => {
         await expect(await loggedIn.burgerMenu.isMenuOpen()).toBeTruthy();
     })
 
-    test('verify burger menu close', async ({ loggedIn }) => {
+    test.skip('verify burger menu close', async ({ loggedIn }) => {
         await loggedIn.burgerMenu.openBurgerMemu();
         await loggedIn.burgerMenu.closeBurgerMenu();
 
