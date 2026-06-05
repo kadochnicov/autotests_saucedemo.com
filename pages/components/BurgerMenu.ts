@@ -1,4 +1,5 @@
 import { Page, expect } from '@/fixtures/baseFixture';
+import { MainPage } from '../MainPage';
 
 export class BurgerMenu {
     page;
@@ -20,7 +21,7 @@ export class BurgerMenu {
 
     async closeBurgerMenu() {
         await this.burgerMenuIconClose().click();
-        return this;
+        return new MainPage(this.page);
     }
 
     async isMenuOpen() {
