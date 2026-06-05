@@ -7,8 +7,6 @@ export class MainPage extends BasePage {
     }
     
     // locators
-    title  = () => this.page.locator('.title');
-
 
     // actions
 
