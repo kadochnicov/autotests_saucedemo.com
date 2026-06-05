@@ -1,5 +1,6 @@
 import { Page, expect } from '@/fixtures/baseFixture';
 import { MainPage } from '../MainPage';
+import { LoginPage } from '../LoginPage';
 
 export class BurgerMenu {
     page;
@@ -12,6 +13,7 @@ export class BurgerMenu {
     burgerMenuIconBurger = () => this.page.locator('#react-burger-menu-btn');
     burgerMenuIconClose = () => this.page.locator('#react-burger-cross-btn');
     menuItems = () => this.page.locator('.bm-menu a');
+    btnLogOut = () => this.page.locator('[id *= "logout"]');
 
     // actions
     async openBurgerMemu() {
@@ -22,6 +24,11 @@ export class BurgerMenu {
     async closeBurgerMenu() {
         await this.burgerMenuIconClose().click();
         return new MainPage(this.page);
+    }
+
+    async btnLogutClick() {
+        return this.btnLogOut().click();
+        return new LoginPage(this.page);
     }
 
     async isMenuOpen() {

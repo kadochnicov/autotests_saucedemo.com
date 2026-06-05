@@ -5,6 +5,7 @@ export class LoginPage {
     constructor(public page: Page) { }
 
     // locators
+    logo = () => this.page.locator('.login_logo');
     userName = () => this.page.locator('#user-name');
     password = () => this.page.locator('#password');
     btnLogin = () => this.page.locator('#login-button');
