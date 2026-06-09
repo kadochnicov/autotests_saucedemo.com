@@ -1,4 +1,5 @@
-import { Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
+import { ProductPage } from '@/pages/ProductPage'
 import { BasePage } from "./components";
 
 export class MainPage extends BasePage {
@@ -7,8 +8,15 @@ export class MainPage extends BasePage {
     }
     
     // locators
-
+    productCards = () => this.page.locator('.inventory_item');
+    //locator prefix
+    label = () => this.page.locator('[class *= "item_name"]');
+    price = () => this.page.locator('[class *= "_price"]');
+    
     // actions
-
-
+    async gotoProductPage(indx: number) {
+        await this.productCards().nth(indx).
+            locator(this.label()).click();
+        return new ProductPage(this.page);
+    }
 }
