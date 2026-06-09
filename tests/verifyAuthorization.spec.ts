@@ -11,7 +11,7 @@ test.describe('authotization', () => {
             await loginPage.login(elment, data.pswrd);
     
             const mainPage = new MainPage(page);
-            await expect(mainPage.header.title()).toHaveText(data.text);
+            await expect(mainPage.header.title()).toHaveText(data.titltText);
         })
     }
     

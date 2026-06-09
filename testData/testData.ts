@@ -1,8 +1,41 @@
 export const testData = {
     // content
-    text: 'Products',
+    titltText: 'Products',
     errorMessageLockedUser: 'Epic sadface: Sorry, this user has been locked out.',
     menuItemList: ['All Items', 'About', 'Logout', 'Reset App State'],
+    productCards: [
+        {
+            index: 0,
+            label: 'Sauce Labs Backpack',
+            price: '$29.99',
+        },
+        {
+            index: 1,
+            label: 'Sauce Labs Bike Light',
+            price: '$9.99',
+        },
+        {
+            index: 2,
+            label: 'Sauce Labs Bolt T-Shirt',
+            price: '$15.99',
+        },
+        {
+            index: 3,
+            label: 'Sauce Labs Fleece Jacket',
+            price: '$49.99',
+        },
+        {
+            index: 4,
+            label: 'Sauce Labs Onesie',
+            price: '$7.99',
+        },
+        {
+            index: 5,
+            label: 'Test.allTheThings() T-Shirt (Red)',
+            price: '$15.99',
+        },
+    ],
+
 
     // user logins
     correctUserNames: ['standard_user', 'problem_user', 'performance_glitch_user', 'error_user', 'visual_user'],
