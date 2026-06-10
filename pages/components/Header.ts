@@ -8,5 +8,11 @@ export class Header {
 
     // locators
     title = () => this.page.locator('.title');
+    basketIcon = () => this.page.locator('[class *= "cart_link"]');
+
     // actions
+    async basketIconClick() {
+        await this.basketIcon().click();
+    }
+
 }

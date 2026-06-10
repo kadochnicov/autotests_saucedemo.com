@@ -7,9 +7,9 @@ export class BasePage {
     #burgerMenu: BurgerMenu | null = null;
     #header: Header | null = null;
 
-     constructor (page : Page) {
-            this.page = page;
-        }
+    constructor(page: Page) {
+        this.page = page;
+    }
 
     get burgerMenu() {
         return this.#burgerMenu ??= new BurgerMenu(this.page);
@@ -18,4 +18,5 @@ export class BasePage {
     get header() {
         return this.#header ??= new Header(this.page);
     }
+
 }
