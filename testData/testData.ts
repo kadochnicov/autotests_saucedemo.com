@@ -1,3 +1,5 @@
+// всю дату решил сохранить в одном файле так как дыты не много и не хочется плодить файлы
+
 export const testData = {
     // content
     titltText: 'Products',
@@ -36,15 +38,14 @@ export const testData = {
         },
     ],
 
-
     // user logins
     correctUserNames: ['standard_user', 'problem_user', 'performance_glitch_user', 'error_user', 'visual_user'],
     standartUserName: 'standard_user',
     lockedOutUser: 'locked_out_user',
+    pswrd: 'secret_sauce',
 
     // URLs
     baseURL: 'https://www.saucedemo.com/',
 
     // ather
-    pswrd: 'secret_sauce',
 }

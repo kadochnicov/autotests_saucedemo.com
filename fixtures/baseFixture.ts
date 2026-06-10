@@ -5,6 +5,7 @@ import { MainPage } from '@/pages/MainPage';
 
 type myFixtures = {
     loggedIn: MainPage;
+    productInBasket: MainPage;
 }
 
 export const test = base.extend<myFixtures>({
@@ -22,6 +23,13 @@ export const test = base.extend<myFixtures>({
 // в тесте переменная logined будет равна объекту new LoginPage
         await use(new MainPage(page));
     },
+
+// фикстура если нужно начать тест с товаром в корзине
+    productInBasket: async({ page, loggedIn }, use) => {
+        const indx = 3;
+        await loggedIn.putInBasket(indx);
+        await use(new MainPage(page));
+    }
 
 });
 
