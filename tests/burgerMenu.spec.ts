@@ -1,7 +1,7 @@
 import { test, expect } from "@/fixtures/baseFixture";
 import { testData as data } from "@/testData/testData";
 
-test.describe('verife burger menu', () => {
+test.describe('verife burger menu', { tag: '@regression' }, () => {
 
 // Here I use the 'loggedIn' fixture, which logs me into the website as a standard user.
     test('verify burger menu open', async ({ loggedIn }) => {
@@ -16,7 +16,7 @@ test.describe('verife burger menu', () => {
         await expect(await loggedIn.burgerMenu.isMenuOpen()).toBeFalsy();
     })
 
-    test('verify menu items', async ({ loggedIn }) => {
+    test('verify menu items', { tag: '@smoke' }, async ({ loggedIn }) => {
         await loggedIn.burgerMenu.openBurgerMemu();
         const listOfItems = await loggedIn.burgerMenu.menuItems()
             .allTextContents();
