@@ -3,9 +3,9 @@ import { BasketPage } from "@/pages/BasketPage";
 import { ProductPage } from "@/pages/ProductPage";
 import { testData as data } from "@/testData/testData";
 
-test.describe('put product in basket', () => {
+test.describe('put product in basket', { tag: '@regresion' }, () => {
 
-    test('put product in basket from main page', async ({ loggedIn, page }) => {
+    test('put product in basket from main page', { tag: '@smoke' }, async ({ loggedIn, page }) => {
         const itemIndex = 0;
         const basketPage = new BasketPage(page);
 
@@ -33,9 +33,9 @@ test.describe('put product in basket', () => {
 
 })
 
-test.describe('cancel product in basket', () => {
+test.describe('cancel product in basket', { tag: '@regresion' } ,() => {
 
-    test('cancel product from main page', async ({ productInBasket }) => {
+    test('cancel product from main page', { tag: '@smoke' }, async ({ productInBasket }) => {
         await productInBasket.btnRemoveClick();
 
         for (const elenent of await productInBasket.btnsRemove().all()) {

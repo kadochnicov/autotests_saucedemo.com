@@ -2,13 +2,13 @@ import { expect, test } from "@/fixtures/baseFixture";
 import { ProductPage } from "@/pages/ProductPage";
 import { testData as data } from "@/testData/testData";
 
-test.describe('product card', () => {
+test.describe('product card', { tag: '@regression' }, () => {
 
     test('check count of cards', async ({ loggedIn }) => {
         await expect(loggedIn.productCards()).toHaveCount(6);
     });
 
-    test('check cards content', async ({ loggedIn }) => {
+    test('check cards content',  async ({ loggedIn }) => {
         let i: number = 0;
         for (const item of await loggedIn.productCards().all()) {
             await test.step(`card nubmber ${i + 1}: check label & price`, async () => {
@@ -22,10 +22,10 @@ test.describe('product card', () => {
     });
 })
 
-test.describe('content on product page', () => {
+test.describe('content on product page', { tag: '@regression' }, () => {
 
     for (const item of data.productCards) {
-        test(`chek content on "${item.label}" page`, async ({ loggedIn, page }) => {
+        test(`chek content on "${item.label}" page`, { tag: '@smoke' }, async ({ loggedIn, page }) => {
             await loggedIn.gotoProductPage(item.index);
             let productPage = new ProductPage(page);
 
@@ -38,7 +38,7 @@ test.describe('content on product page', () => {
     }
 })
 
-test.describe('elements on product page', () => {
+test.describe('elements on product page', { tag: '@regression' }, () => {
 
     test('verify breadcrumbs button', async({ loggedIn, page }) => {
         let productPage = new ProductPage(page);
