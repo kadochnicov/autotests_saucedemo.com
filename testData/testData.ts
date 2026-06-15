@@ -1,4 +1,6 @@
-// всю дату решил сохранить в одном файле так как дыты не много и не хочется плодить файлы
+import { faker } from '@faker-js/faker';
+// всю дату решил сохранить в одном файле так как даты не много 
+// и не хочется плодить файлы
 
 export const testData = {
     // content
@@ -47,5 +49,15 @@ export const testData = {
     // URLs
     baseURL: 'https://www.saucedemo.com/',
 
-    // ather
+    // farer data
+    fakerName: faker.person.firstName(),
+    fakerLastname: faker.person.fullName(),
+    fakerIndex: String(faker.number.int(9999)),
+
+    // validation information
+    errorMessage: {
+        requerFirstName: 'Error: First Name is required',
+        requerLastName: 'Error: First Name is required',
+        requerPostCode: 'Error: Postal Code is required',
+    }
 }

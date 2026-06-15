@@ -11,14 +11,18 @@ export class BasketPage {
     itemCards = () => this.page.locator('.cart_item');
     itemLabel = () => this.page.locator('[id *= "title_link"]');
     btnsRemove = () => this.page.locator('[id *= "remove"]');
+    btnCheckout = () => this.page.locator('#checkout');
 
     // actions
     async RemoveFromBasket() {
         while ((await this.btnsRemove().all()).length > 0) {
-            console.log((await this.btnsRemove().all()).length);
             await this.btnsRemove().nth(0).click();
         }
 
         return this;
+    }
+
+    async Checkout() {
+        await this.btnCheckout().click();
     }
 }

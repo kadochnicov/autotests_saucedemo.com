@@ -54,3 +54,11 @@ test.describe('cancel product in basket', { tag: '@regresion' } ,() => {
     })
 
 })
+
+test.describe('verify vizyal part of basket', { tag: '@vizusl' }, () => {
+    
+    test('verify basket icon', async({ loggedIn }) => {
+        await expect(loggedIn.header.basketIcon()).toHaveScreenshot();
+    })
+
+})

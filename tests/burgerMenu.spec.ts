@@ -3,7 +3,7 @@ import { testData as data } from "@/testData/testData";
 
 test.describe('verife burger menu', { tag: '@regression' }, () => {
 
-// Here I use the 'loggedIn' fixture, which logs me into the website as a standard user.
+    // Here I use the 'loggedIn' fixture, which logs me into the website as a standard user.
     test('verify burger menu open', async ({ loggedIn }) => {
         await loggedIn.burgerMenu.openBurgerMemu();
         await expect(await loggedIn.burgerMenu.isMenuOpen()).toBeTruthy();
@@ -22,5 +22,9 @@ test.describe('verife burger menu', { tag: '@regression' }, () => {
             .allTextContents();
 
         await expect(listOfItems).toEqual(data.menuItemList);
+    })
+
+    test('verify burger menu icon', { tag: '@vizual' },async({ loggedIn }) => {
+        await expect(loggedIn.burgerMenu.burgerMenuIconBurger()).toHaveScreenshot();
     })
 }) 
