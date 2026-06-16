@@ -11,7 +11,7 @@ import { defineConfig, devices } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+export default defineConfig<UserOptions>({
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -37,10 +37,33 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'standard_user',
+      use: {
+        ...devices['Desktop Chrome'],
+        username: 'standard_user',
+        password: 'secret_sauce',
+      },
     },
-
+    {
+      name: 'problem_user',
+      use: {
+        ...devices['Desktop Chrome'],
+        username: 'problem_user',
+        password: 'secret_sauce',
+      },
+    },
+    {
+      name: 'error_user',
+      use: {
+        ...devices['Desktop Chrome'],
+        username: 'error_user',
+        password: 'secret_sauce',
+      }
+    }
+    // {
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome'] },
+    // },
     // {
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },
