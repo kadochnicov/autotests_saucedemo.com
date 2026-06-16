@@ -8,6 +8,8 @@ export class ComplitePage {
 
     // locators
     comlpleteContent = () => this.page.locator('#checkout_complete_container');
+    completeHeader = () => this.page.locator('.complete-header');
+    completeText = () => this.page.locator('.complete-text');
 
     // actions
 }

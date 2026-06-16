@@ -39,6 +39,11 @@ export const testData = {
             price: '$15.99',
         },
     ],
+    completeContent: {
+        header: 'Thank you for your order!',
+        text:  `Your order has been dispatched, 
+        and will arrive just as fast as the pony can get there!`,
+    },
 
     // user logins
     correctUserNames: ['standard_user', 'problem_user', 'performance_glitch_user', 'error_user', 'visual_user'],
@@ -57,7 +62,7 @@ export const testData = {
     // validation information
     errorMessage: {
         requerFirstName: 'Error: First Name is required',
-        requerLastName: 'Error: First Name is required',
+        requerLastName: 'Error: Last Name is required',
         requerPostCode: 'Error: Postal Code is required',
     }
 }
