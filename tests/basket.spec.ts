@@ -3,7 +3,7 @@ import { BasketPage } from "@/pages/BasketPage";
 import { ProductPage } from "@/pages/ProductPage";
 import { testData as data } from "@/testData/testData";
 
-test.describe('put product in basket', { tag: '@regresion' }, () => {
+test.describe('put product in basket', { tag: '@regression' }, () => {
 
     test('put product in basket from main page', { tag: '@smoke' }, async ({ loggedIn, page }) => {
         const itemIndex = 0;
