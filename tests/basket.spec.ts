@@ -35,20 +35,19 @@ test.describe('put product in basket', { tag: '@regresion' }, () => {
 
 test.describe('cancel product in basket', { tag: '@regresion' } ,() => {
 
-    test('cancel product from main page', { tag: '@smoke' }, async ({ productInBasket }) => {
-        await productInBasket.btnRemoveClick();
+    test('cancel product from main page', { tag: '@smoke' }, async ({ productInBasket: app }) => {
+        await app.mainPage.btnRemoveClick();
 
-        for (const elenent of await productInBasket.btnsRemove().all()) {
+        for (const elenent of await app.mainPage.btnsRemove().all()) {
             await expect.soft(await elenent).not.toBeVisible();
         }
     })
 
-    test('cancel product from basket', async ({ productInBasket, page }) => {
-        const basketPage = new BasketPage(page);
-        await productInBasket.header.basketIconClick();
-        await basketPage.RemoveFromBasket();
+    test('cancel product from basket', async ({ productInBasket: app }) => {
+        await app.mainPage.header.basketIconClick();
+        await app.basketPage.RemoveFromBasket();
 
-        for (const elenent of await basketPage.btnsRemove().all()) {
+        for (const elenent of await app.basketPage.btnsRemove().all()) {
             await expect.soft(await elenent).not.toBeVisible();
         }
     })
