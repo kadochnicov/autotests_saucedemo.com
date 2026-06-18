@@ -22,7 +22,7 @@ export class LoginPage {
         return new MainPage(this.page);
     }
 
-    async userNameFill(name: string) {
+    async userNameFill(name: string | null) {
         if(name){
           await this.userName().fill(name) ;
         } else {

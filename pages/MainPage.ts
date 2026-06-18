@@ -10,11 +10,13 @@ export class MainPage extends BasePage {
 
     // locators
     productCards = () => this.page.locator('.inventory_item');
+    btnAddToCard = () => this.page.locator('[id *= "add-to-cart"]');
+    btnsRemove = () => this.page.locator('[id *= "remove"]');
+    filter = () => this.page.locator('.product_sort_container')
     //locator prefix
     label = () => this.page.locator('[class *= "item_name"]');
     price = () => this.page.locator('[class *= "_price"]');
-    btnAddToCard = () => this.page.locator('[id *= "add-to-cart"]');
-    btnsRemove = () => this.page.locator('[id *= "remove"]');
+
 
     // actions
     async gotoProductPage(indx: number) {
@@ -33,11 +35,41 @@ export class MainPage extends BasePage {
 
     async btnRemoveClick() {
         while ((await this.btnsRemove().all()).length > 0) {
-            console.log( (await this.btnsRemove().all()).length );
+            console.log((await this.btnsRemove().all()).length);
             await this.btnsRemove().nth(0).click();
         }
 
         return this;
+    }
+
+    async SetAscPriceFilter() {
+        await this.filter().selectOption('Price (low to high)');
+    }
+
+    async SetDescPriceFilter() {
+        await this.filter().selectOption('Price (high to low)');
+    }
+
+    async getPriceArray() {
+        let priceArray = await this.price().allInnerTexts();
+        let compliteArray = priceArray.map((el) => parseFloat(el.replace(/[^0-9.]/g, '')))
+        return compliteArray;
+    }
+
+    async isArrAsc() {
+        const arr = await this.getPriceArray();
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[i - 1]) return false;
+        }
+        return true;
+    }
+
+    async isArrDesc() {
+        const arr = await this.getPriceArray();
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > arr[i - 1]) return false;
+        }
+        return true;
     }
 
 }

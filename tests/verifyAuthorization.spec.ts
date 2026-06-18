@@ -52,7 +52,7 @@ test.describe('verify authorization form', { tag: '@regression' }, () => {
     })
 
     test('authorization whith empty password field', async({ app }) => {
-        await app.loginPage.userNameFill();
+        await app.loginPage.userNameFill(null);
         await app.loginPage.btnLoginClick();
 
         await expect(app.loginPage.errorMessage()).toHaveText(data.errorMessage.requerPswrd)
