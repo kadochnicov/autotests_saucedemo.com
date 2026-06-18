@@ -4,8 +4,8 @@ import { testData as data } from "@/testData/testData";
 
 test.describe('product card', { tag: '@regression' }, () => {
 
-    test('check count of cards', async ({ loggedIn }) => {
-        await expect(loggedIn.productCards()).toHaveCount(6);
+    test('check count of cards', async ({ loggedIn: mainPage }) => {
+        await expect(mainPage.productCards()).toHaveCount(6);
     });
 
     test('check cards content',  async ({ loggedIn }) => {
@@ -48,4 +48,18 @@ test.describe('elements on product page', { tag: '@regression' }, () => {
         await expect(loggedIn.header.title()).toHaveText(data.titltText)
     })
 
+})
+
+test.describe('verify filter on product page', { tag: ['@regression', '@filter'] }, () => {
+   
+    test('verify sort filter by price ascending', async({ loggedIn: mainPage }) => {
+        await mainPage.SetAscPriceFilter();
+        await expect(await mainPage.isArrAsc()).toBeTruthy();
+    })
+
+    test('verify sort filter by price descending', async({ loggedIn: mainPage }) => {
+        await mainPage.SetDescPriceFilter();
+        await expect(await mainPage.isArrDesc()).toBeTruthy();
+    })
+    
 })
