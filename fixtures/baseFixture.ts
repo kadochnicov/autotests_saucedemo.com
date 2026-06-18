@@ -28,6 +28,7 @@ export const test = base.extend<myFixtures & UserOptions>({
         await use(page);
     },
 
+
 // добавляем собственную фикстуру которая будет логинить стандартного пользователя
     loggedIn: async ({ page, username, password }, use) => {
         const loginPage = new LoginPage(page);

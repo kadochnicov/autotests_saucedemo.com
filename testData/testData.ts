@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker';
-// всю дату решил сохранить в одном файле так как даты не много 
+// всю дату решил сохранить в одном файле, так как даты не много 
 // и не хочется плодить файлы
+// но бест практис говорит что для каждая страничка требует свою дата файл
 
 export const testData = {
     // content
@@ -54,7 +55,7 @@ export const testData = {
     // URLs
     baseURL: 'https://www.saucedemo.com/',
 
-    // farer data
+    // faker data
     fakerName: faker.person.firstName(),
     fakerLastname: faker.person.fullName(),
     fakerIndex: String(faker.number.int(9999)),
@@ -64,5 +65,7 @@ export const testData = {
         requerFirstName: 'Error: First Name is required',
         requerLastName: 'Error: Last Name is required',
         requerPostCode: 'Error: Postal Code is required',
+        requerUserName: 'Epic sadface: Username is required',
+        requerPswrd: 'Epic sadface: Password is required',
     }
 }

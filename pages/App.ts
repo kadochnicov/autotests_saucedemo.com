@@ -4,6 +4,7 @@ import { CheckoutInfoPage } from './CheckOutInfoPage';
 import { OvetviewPage } from './OverviewPage';
 import { ComplitePage } from './ComplitePage';
 import { MainPage } from './MainPage';
+import { LoginPage } from './LoginPage';
 
 export class App {
     page;
@@ -12,6 +13,7 @@ export class App {
     #overviewerPage: OvetviewPage | null = null;
     #complitePage: ComplitePage | null = null;
     #mainPage: MainPage | null = null;
+    #loginPage: LoginPage | null = null;
 
     constructor(page: Page) {
         this.page = page;
@@ -34,6 +36,10 @@ export class App {
     }
 
     get mainPage() {
-        return this.#mainPage ??= new MainPage(this.page)
+        return this.#mainPage ??= new MainPage(this.page);
+    }
+
+    get loginPage() {
+        return this.#loginPage ??= new LoginPage(this.page);
     }
 }

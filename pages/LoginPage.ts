@@ -1,5 +1,6 @@
 import { Page } from "@playwright/test";
 import { MainPage } from "./MainPage";
+import { testData as data } from "@/testData/testData";
 
 export class LoginPage {
     constructor(public page: Page) { }
@@ -10,7 +11,7 @@ export class LoginPage {
     password = () => this.page.locator('#password');
     btnLogin = () => this.page.locator('#login-button');
     mainPageTitle = () => this.page.locator('.title');
-    errorMessageLockedUser = () => this.page.locator('[data-test="error"]');
+    errorMessage = () => this.page.locator('[data-test="error"]');
 
     // actions
     async login(name: string, password: string) {
@@ -19,6 +20,24 @@ export class LoginPage {
         await this.btnLogin().click();
 
         return new MainPage(this.page);
+    }
+
+    async userNameFill(name: string) {
+        if(name){
+          await this.userName().fill(name) ;
+        } else {
+            await this.userName().fill(data.fakerName);
+        }
+        return this;
+    }
+
+    async passwordFill() {
+        await this.password().fill(data.pswrd)
+        return this;
+    }
+
+    async btnLoginClick() {
+        await this.btnLogin().click();
     }
 
 }
