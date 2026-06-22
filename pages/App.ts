@@ -5,18 +5,25 @@ import { OvetviewPage } from './OverviewPage';
 import { ComplitePage } from './ComplitePage';
 import { MainPage } from './MainPage';
 import { LoginPage } from './LoginPage';
+import { ProductPage } from './ProductPage';
+
 
 export class App {
-    page;
+    public page;
     #basketPage: BasketPage | null = null;
     #checkoutInfoPage: CheckoutInfoPage | null = null;
     #overviewerPage: OvetviewPage | null = null;
     #complitePage: ComplitePage | null = null;
     #mainPage: MainPage | null = null;
     #loginPage: LoginPage | null = null;
+    #productPage: ProductPage | null = null;
 
     constructor(page: Page) {
         this.page = page;
+    }
+
+    get productPage() {
+        return this.#productPage ??= new ProductPage(this.page);
     }
 
     get basketPage() {
