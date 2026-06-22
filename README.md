@@ -38,8 +38,7 @@
 
 1. **Клонируйте репозиторий:**
    ```bash
-   git clone https://github.com
-   cd ИМЯ_РЕПОЗИТОРИЯ
+   https://github.com/kadochnicov/autotests_saucedemo.com.git
    ```
 
 2. **Установите зависимости:**
