@@ -7,7 +7,7 @@ setup('auth setup for standart user', async( {app} ) => {
     const url = String(process.env.BASE_URL);
     const authFile = path.join(process.cwd(), '.auth/user.json');
 
-    await app.loginPage.login(url, login, pswrd);
+    await app.loginPage.login(login, pswrd, url);
     await app.page.context().storageState({ path: authFile });
 })
 
