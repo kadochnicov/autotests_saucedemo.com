@@ -32,14 +32,13 @@ export class BurgerMenu {
     }
 
     async isMenuOpen() {
-        const hide = await this.menuWraper().getAttribute('aria-hidden');
-
-        if (hide == 'false'){
+        try {
+            await expect(this.menuWraper()).toHaveAttribute('aria-hidden', 'false', { timeout: 3000 });
             console.log('menu is open');
             return true;
-        } else {
-            console.log('menu is closed');
-            return false;
+        } catch (e) {
+                console.log('menu is closed');
+                return false;
         }
     }
 
