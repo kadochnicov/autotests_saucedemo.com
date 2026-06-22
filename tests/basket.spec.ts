@@ -37,31 +37,39 @@ test.describe.serial('put product in basket', { tag: '@regression' }, () => {
 
 })
 
-// test.describe('cancel product in basket', { tag: '@regresion' } ,() => {
+test.describe('cancel product in basket', { tag: '@regresion' } ,() => {
 
-//     test('cancel product from main page', { tag: '@smoke' }, async ({ productInBasket: app }) => {
-//         await app.mainPage.btnRemoveClick();
+     test.beforeEach(async ({ page }) => {
+          await page.goto(String(process.env.PRODUCT_URL)); 
+     });
 
-//         for (const elenent of await app.mainPage.btnsRemove().all()) {
-//             await expect.soft(await elenent).not.toBeVisible();
-//         }
-//     })
+    test('cancel product from main page', { tag: '@smoke' }, async ({ productInBasket: app }) => {
+        await app.mainPage.btnRemoveClick();
 
-//     test('cancel product from basket', async ({ productInBasket: app }) => {
-//         await app.mainPage.header.basketIconClick();
-//         await app.basketPage.RemoveFromBasket();
+        for (const elenent of await app.mainPage.btnsRemove().all()) {
+            await expect.soft(await elenent).not.toBeVisible();
+        }
+    })
 
-//         for (const elenent of await app.basketPage.btnsRemove().all()) {
-//             await expect.soft(await elenent).not.toBeVisible();
-//         }
-//     })
+    test('cancel product from basket', async ({ productInBasket: app }) => {
+        await app.mainPage.header.basketIconClick();
+        await app.basketPage.RemoveFromBasket();
 
-// })
+        for (const elenent of await app.basketPage.btnsRemove().all()) {
+            await expect.soft(await elenent).not.toBeVisible();
+        }
+    })
 
-// test.describe('verify vizyal part of basket', { tag: '@vizusl' }, () => {
+})
+
+test.describe('verify vizyal part of basket', { tag: '@ui' }, () => {
+
+     test.beforeEach(async ({ page }) => {
+          await page.goto(String(process.env.PRODUCT_URL)); 
+     });
     
-//     test('verify basket icon', async({ loggedIn }) => {
-//         await expect(loggedIn.header.basketIcon()).toHaveScreenshot();
-//     })
+    test('verify basket icon', async({ app }) => {
+        await expect(app.mainPage.header.basketIcon()).toHaveScreenshot();
+    })
 
-// })
+})

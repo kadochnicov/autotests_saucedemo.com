@@ -4,7 +4,6 @@ import { MainPage } from '@/pages/MainPage';
 import { App } from '@/pages/App';
 
 type myFixtures = {
-    loggedIn: MainPage,
     productInBasket: App,
     app: App,
 }
@@ -20,7 +19,7 @@ export const test = base.extend<myFixtures>({
 // фикстура если нужно начать тест с товаром в корзине
     productInBasket: async({ app }, use) => {
         const indx = 3;
-      //  await loggedIn.putInBasket(indx);
+        await app.mainPage.putInBasket(indx);
         await use(app); 
     }
 
