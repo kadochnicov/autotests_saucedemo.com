@@ -14,7 +14,7 @@ export class LoginPage {
     errorMessage = () => this.page.locator('[data-test="error"]');
 
     // actions
-    async login(url: string, name: string, password: string) {
+    async login(name: string, password: string, url: string = String(process.env.BASE_URL)) {
         await this.page.goto(url);
         await this.userName().fill(name);
         await this.password().fill(password);
