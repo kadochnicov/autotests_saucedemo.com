@@ -50,8 +50,10 @@
 3. **Создайте файл конфигурации окружения:**
    Создайте файл `.env` в корне проекта по примеру:
    ```ini
-   PRODUCT_URL=https://www.saucedemo.com
-   # Добавьте другие переменные, если необходимо
+   BASE_URL=https://www.saucedemo.com/
+   PRODUCT_URL=https://www.saucedemo.com/inventory.html
+   STANDART_USER_NAME=standard_user
+   PSWRD=secret_sauce
    ```
 
 4. **Запустите тесты:**
