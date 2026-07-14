@@ -1,6 +1,5 @@
 import { test, expect, Page } from "@/fixtures/baseFixture";
 import { testData as data } from "@/testData/testData";
-import { LoginPage } from "../pages/LoginPage";
 
 test.describe('authorization', { tag: ['@smoke', '@regrasion'] }, () => {
 
@@ -68,11 +67,20 @@ test.describe('verify authorization form', { tag: '@regression' }, () => {
         await expect(app.loginPage.errorMessage()).toHaveText(data.errorMessage.requerPswrd)
     })
 
-    test('authorization whth empty useername & password fields', async({ app }) => {
+    test('authorization whith empty useername & password fields', async({ app }) => {
         await app.loginPage.btnLoginClick();
 
         await expect(app.loginPage.errorMessage()).
             toHaveText(data.errorMessage.requerUserName)
+    })
+
+    test('authorization using wrong data', async({ app }) => {
+        await app.loginPage.userNameFill('wrong_name');
+        await app.loginPage.passwordFill();
+        await app.loginPage.btnLoginClick();
+
+        await expect(app.loginPage.errorMessage()).
+            toHaveText(data.errorMessage.badData)
     })
 
 })
