@@ -67,5 +67,6 @@ export const testData = {
         requerPostCode: 'Error: Postal Code is required',
         requerUserName: 'Epic sadface: Username is required',
         requerPswrd: 'Epic sadface: Password is required',
+        badData: 'Epic sadface: Username and password do not match any user in this service',
     }
 }
